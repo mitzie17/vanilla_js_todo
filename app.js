@@ -24,7 +24,7 @@ function addTodo(e) {
   // Create check mark button, insert icon as html, and add the class 'completed-btn'
   const completedButton = document.createElement("button");
   completedButton.innerHTML = '<i class="fas fa-check"></i>';
-  completedButton.classList.add("completed-btn");
+  completedButton.classList.add("complete-btn");
   // Append the completedButton to the todoDiv
   todoDiv.appendChild(completedButton);
   // Create trash mark button, insert icon as html, and add the class 'completed-btn'
