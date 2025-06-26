@@ -17,7 +17,7 @@ function addTodo(e) {
   todoDiv.classList.add("todo");
   // Create LI for each new todo, change its innerText, and add the class 'todo-item'
   const newTodo = document.createElement("li");
-  newTodo.innerText = "Hello";
+  newTodo.innerText = todoInput.value;
   newTodo.classList.add("todo-item");
   // Append newTodo to the todoDiv
   todoDiv.appendChild(newTodo);
@@ -35,4 +35,6 @@ function addTodo(e) {
   todoDiv.appendChild(trashButton);
   // Finally, append the todoDiv to the ul with the classname 'todo-list' (todoList variable, line 5)
   todoList.appendChild(todoDiv);
+  // Clear todoInput
+  todoInput.value = "";
 }
