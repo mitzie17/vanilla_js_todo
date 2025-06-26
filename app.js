@@ -45,7 +45,14 @@ function deleteCheck(e) {
   // Delete todo
   if (item.classList[0] === "trash-btn") {
     const todo = item.parentElement;
-    todo.remove();
+    // Animation
+    todo.classList.add("fall");
+    // Here an event listener is called so that when the transition ends, the function to remove the todo runs
+    // else if remove is called outside this function then it would run almost at the same time as the transition
+    // and it wouldn't be noticeable
+    todo.addEventListener("transitionend", function () {
+      todo.remove();
+    });
   }
 
   // Check mark
