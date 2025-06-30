@@ -53,6 +53,7 @@ function deleteCheck(e) {
     const todo = item.parentElement;
     // Animation
     todo.classList.add("fall");
+    removeLocalStorageTodos(todo);
     // Here an event listener is called so that when the transition ends, the function to remove the todo runs
     // else if remove is called outside this function then it would run almost at the same time as the transition
     // and it wouldn't be noticeable
@@ -145,4 +146,20 @@ function getTodos() {
     // Finally, append the todoDiv to the ul with the classname 'todo-list' (todoList variable, line 5)
     todoList.appendChild(todoDiv);
   });
+}
+
+function removeLocalStorageTodos(todo) {
+  // Check -- Is there something already there?
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    // if nothing is there, then an empty array is created
+    todos = [];
+  } else {
+    // assuming that there is something already there, then it is parsed(retrieved) back into an array
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+  console.log(todos);
 }
